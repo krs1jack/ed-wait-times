@@ -1,23 +1,103 @@
+/* MyHealthyCircle Design System - Joyful Wellness */
+/* Sophisticated, Professional, Trustworthy */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+:root {
+  /* Primary Colors */
+  --royal-blue: #1D4ED8;
+  --royal-blue-dark: #1e40af;
+  --royal-blue-light: #3b82f6;
+
+  /* Accent Colors */
+  --bright-orange: #FB923C;
+  --bright-orange-dark: #EA580C;
+  --playful-pink: #EC4899;
+  --playful-pink-dark: #db2777;
+
+  /* Backgrounds */
+  --warm-peach: #FFF7ED;
+  --warm-peach-dark: #FFEDD5;
+  --soft-white: #FEFEFE;
+
+  /* Text Colors */
+  --warm-stone: #57534E;
+  --warm-stone-light: #78716C;
+  --warm-stone-dark: #44403C;
+
+  /* Supporting */
+  --success-green: #22C55E;
+  --warning-amber: #F59E0B;
+  --error-red: #EF4444;
+
+  /* Sophisticated additions */
+  --gradient-hero: linear-gradient(135deg, #1D4ED8 0%, #3b82f6 50%, #1D4ED8 100%);
+  --gradient-warm: linear-gradient(180deg, #FFF7ED 0%, #FFFFFF 100%);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-blue: 0 8px 32px rgba(29, 78, 216, 0.2);
+  --shadow-orange: 0 8px 24px rgba(251, 146, 60, 0.3);
+
+  /* Layout */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Nunito', system-ui, sans-serif;
+  line-height: 1.7;
+  background: var(--soft-white);
+  color: var(--warm-stone);
   min-height: 100vh;
-  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--royal-blue);
 }
 
 #root {
-  padding: 20px;
+  min-height: 100vh;
 }
 
-@media (max-width: 768px) {
-  #root {
-    padding: 10px;
-  }
+/* Selection */
+::selection {
+  background: var(--bright-orange);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--warm-peach);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--royal-blue-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--royal-blue);
 }
