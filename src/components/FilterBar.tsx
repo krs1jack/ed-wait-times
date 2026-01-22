@@ -20,19 +20,16 @@ export function FilterBar({
           className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
           onClick={() => onFilterChange('all')}
         >
-          All Hospitals
         </button>
         <button
           className={`filter-btn ${filter === 'with-wait-times' ? 'active' : ''}`}
           onClick={() => onFilterChange('with-wait-times')}
         >
-          With Online Wait Times
         </button>
         <button
           className={`filter-btn ${filter === 'without-wait-times' ? 'active' : ''}`}
           onClick={() => onFilterChange('without-wait-times')}
         >
-          Without Online Wait Times
         </button>
       </div>
       <div className="filter-count">
