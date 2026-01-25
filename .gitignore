@@ -2,3 +2,24 @@ node_modules
 dist
 .DS_Store
 *.local
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env*.local
+
+# API keys and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+secret.json
+secrets.json
+
+# Security and authentication
+auth.json
+.htpasswd
