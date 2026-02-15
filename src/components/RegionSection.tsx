@@ -10,8 +10,16 @@ export function RegionSection({ region }: RegionSectionProps) {
 
   return (
     <div className="region-section">
-      <h3 className="subsection-title">{region.name}</h3>
-      <div className="facility-grid">
+      <div className="section-header">
+        <h3 className="region-title">
+          {region.name}
+          <span className="region-count-badge">
+            {region.hospitals.length}
+          </span>
+        </h3>
+      </div>
+
+      <div className="cards-grid">
         {region.hospitals.map((hospital) => (
           <FacilityCard key={hospital.id} hospital={hospital} />
         ))}

@@ -14,29 +14,30 @@ export function FilterBar({
   filteredCount,
 }: FilterBarProps) {
   return (
-    <div className="filter-bar">
-      <div className="filter-buttons">
+    <div className="filter-container">
+      <div className="filter-group">
         <button
           className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
           onClick={() => onFilterChange('all')}
         >
-          All Hospitals
+          <span>🏥</span> All Hospitals
         </button>
         <button
           className={`filter-btn ${filter === 'with-wait-times' ? 'active' : ''}`}
           onClick={() => onFilterChange('with-wait-times')}
         >
-          With Online Wait Times
+          <span>✅</span> With Wait Times
         </button>
         <button
           className={`filter-btn ${filter === 'without-wait-times' ? 'active' : ''}`}
           onClick={() => onFilterChange('without-wait-times')}
         >
-          Without Online Wait Times
+          <span>📋</span> Information Only
         </button>
       </div>
-      <div className="filter-count">
-        Showing {filteredCount} of {totalCount} hospitals
+
+      <div className="filter-results-count">
+        Showing <strong>{filteredCount}</strong> of {totalCount} locations
       </div>
     </div>
   );

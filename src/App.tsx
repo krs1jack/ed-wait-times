@@ -3,10 +3,13 @@ import {
   Header,
   EmergencyNotice,
   FilterBar,
-  AppCard,
   RegionSection,
   HowItWorks,
   Disclaimer,
+  Footer,
+  StatsBar,
+  ScrollToTop,
+  AppCard
 } from './components';
 import { regions } from './data/hospitals';
 import { mobileApps } from './data/apps';
@@ -16,6 +19,12 @@ import './App.css';
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState<FilterOption>('all');
+
+  // Stats calculation
+  const allHospitals = useMemo(() =>
+    regions.flatMap(r => r.hospitals),
+    []
+  );
 
   const { filteredRegions, totalCount, filteredCount } = useMemo(() => {
     let total = 0;
@@ -72,15 +81,21 @@ function App() {
 
   return (
     <div className="app">
-      <div className="container">
-        <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+
+      <main className="main-content">
+        <StatsBar
+          totalHospitals={allHospitals.length}
+          totalRegions={regions.length}
+          featuredHospitals={allHospitals}
+        />
 
         <EmergencyNotice />
 
         {mobileApps.length > 0 && (
-          <section className="section">
-            <h2 className="section-title">Mobile Apps</h2>
-            <div className="app-grid">
+          <section className="section" style={{ marginBottom: '3rem' }}>
+            <h2 className="hero-title" style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Mobile Apps</h2>
+            <div className="cards-grid">
               {mobileApps.map((app) => (
                 <AppCard key={app.id} app={app} />
               ))}
@@ -88,9 +103,7 @@ function App() {
           </section>
         )}
 
-        <section className="section">
-          <h2 className="section-title">Hospital Systems by Region</h2>
-
+        <section id="wait-times">
           <FilterBar
             filter={filter}
             onFilterChange={setFilter}
@@ -103,14 +116,22 @@ function App() {
               <RegionSection key={region.id} region={region} />
             ))
           ) : (
-            <div className="no-results">
-              <p>No hospitals found matching your criteria.</p>
+            <div className="no-results" style={{
+              textAlign: 'center',
+              padding: '4rem 2rem',
+              background: 'var(--white)',
+              borderRadius: 'var(--radius-lg)',
+              boxShadow: 'var(--shadow-md)'
+            }}>
+              <p style={{ fontSize: '1.2rem', color: 'var(--neutral-500)', marginBottom: '1.5rem' }}>
+                No hospitals found matching "{searchQuery}"
+              </p>
               <button
                 onClick={() => {
                   setSearchQuery('');
                   setFilter('all');
                 }}
-                className="reset-btn"
+                className="card-btn card-btn-primary"
               >
                 Reset Filters
               </button>
@@ -119,9 +140,11 @@ function App() {
         </section>
 
         <HowItWorks />
-
         <Disclaimer />
-      </div>
+      </main>
+
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 }
